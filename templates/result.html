@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Web Vulnerability Scanner</title>
+        <style>
+            body {
+                background: linear-gradient(to bottom, #000000, #1a1a1a);
+                color: gold;
+                font-family: Arial, sans-serif;
+            }
+            .result-container {
+                padding: 20px;
+                margin: 20px;
+                border: 1px solid white;
+            }
+            .result-line {
+                margin-bottom: 10px;
+            }
+            .blue-text {
+            color: rgb(22, 171, 216);
+        }
+        </style>
+    </head>
+    <body>
+        <div class="result-container">
+            <h1>Web Vulnerability Scanner Report</h1>
+            <h2>Report</h2>
+            <div>
+                {% for line in tool_output_lines %}
+                    {% if '[+]' in line %}
+                        <p class="blue-text">{{ line }}</p>
+                    {% else %}
+                        <p>{{ line }}</p>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <h2>Solutions</h2>
+            <ul>
+                {% for solution in solutions %}
+                <li>{{ solution }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </body>
+    </html>
